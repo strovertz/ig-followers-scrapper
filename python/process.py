@@ -1,10 +1,21 @@
 from asyncio.windows_events import NULL
 from PIL import Image
 from pytesseract import pytesseract
+from selenium import webdriver 
+from selenium.webdriver.chrome.options import Options
+from urllib.request import urlopen
+from urllib.error import HTTPError
+from urllib.error import URLError
+from bs4 import BeautifulSoup
+
 
 def catch_images():
-    print("teste")
- #
+    from urllib.request import urlopen
+    from bs4 import BeautifulSoup
+    html = urlopen("https://www.python.org/")
+    res = BeautifulSoup(html.read(),"html5lib");
+    print(res.title)
+ 
 def get_path():
     #Define path to tessaract.exe
     path_to_tesseract = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
@@ -12,7 +23,7 @@ def get_path():
     profiles = ['images/teste.png', 'images/sampletext1-ocr.png']
 
     lista = []
-
+    #catch_images()
     #Define path to image
     for i in profiles:
         path_to_image = i
@@ -27,7 +38,7 @@ def get_path():
         text = pytesseract.image_to_string(img)
 
         lista.append(text)
-        
+
         return lista
 
 def words():

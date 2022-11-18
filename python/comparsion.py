@@ -1,5 +1,4 @@
 from process import *
-from selenium import webdriver 
 
 def busca():
     word = words()
